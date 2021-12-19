@@ -37,7 +37,7 @@ st.markdown(
 
 
     
-st.image('lets_beat_covid_19_together_e.png')
+# st.image('lets_beat_covid_19_together_e.png')
 st.title('Welcome to my COVID application')
 st.write("This application predicts status of covid from users' symptoms and/or chest X-ray" )
 st.write("It is useful especially when there is no access to PCR test")
