@@ -8,17 +8,14 @@ Both were used to generate classification models. symptoms model is based on ran
 
 ### information about datasets
 
-    - ##### symptoms dataset
+- ##### symptoms dataset
 
-        - COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred
+- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred
+- over 3 million patients were tested 
+- features - headache, sore throat, age above 60, shortness of breath, fever, cough, test indication
+- label - test outcome 
 
-        - over 3 million patients were tested 
-        - features - headache, sore throat, age above 60, shortness of breath, fever, cough, test indication
-        - label - test outcome 
-
-     - ##### chest Xray dataset
-
-      
-        -  ##### dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
-        - ##### dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset
+- ##### chest Xray dataset
+-  dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
+-  dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset
 
