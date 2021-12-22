@@ -13,3 +13,6 @@ tensorflow==2.0.0
 tensorflow-estimator==2.0.0
 joblib
 numpy
+h5py==2.8.0
+Keras-Preprocessing
+Keras-Applications
