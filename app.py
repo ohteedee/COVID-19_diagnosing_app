@@ -16,7 +16,7 @@ st.sidebar.write('email- tosinoyewale@yahoo.co.uk')
 
 
 if navigation == 'main app':  
-    # st.image('END_COVID.jpeg')
+    st.image('END_COVID.jpeg')
     st.title('COVID-diagnosing application')
     st.write("This application predicts status of covid of users' using symptoms and/or chest X-ray as input" )
     st.write("It is useful especially when there is no access to PCR test")
