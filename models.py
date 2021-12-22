@@ -11,9 +11,9 @@ def predict_symptoms_outcome(dataframe):
     This function imports Random forest model from utils and predict COVID-19 infection oucome using symptoms of user.
     it takes a dataframe as input
     '''
-    
-    predicted_symptoms = new_RF_model.predict(dataframe)
-    return predicted_symptoms
+    predicted_class = new_RF_model.predict(dataframe)
+    predicted_probability = new_RF_model.predict_proba(dataframe)
+    return predicted_probability, predicted_class
 
 def predict_covid_with_Xray(processed_image):
     '''
