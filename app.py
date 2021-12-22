@@ -185,14 +185,37 @@ if navigation == 'main app':
 
 elif navigation == 'about':
 
-    st.markdown('#### COVID-19 symptoms dataset is publicly available from government of Israel')
-    st.write(' ')
-    st.markdown(""" - ##### dataset translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred
-- ##### over 3 million patients were tested 
-- ##### dataset contains: headache, sore throat, age above 60, shortness of breath, fever, cough, test indication, test outcome 
-""")
+    '## General information'
+    'The application is based on two datasets; first is based on covid-19 symptoms and the second is based on chest xray'
 
-    st.markdown('#### COVID-19 chest Xray images are available on Kaggle')
-    st.markdown(""" -  ##### dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
-- ##### dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset
-    """)
+    'Both were used to generate classification models. symptoms model is based on random forest classification algorithm while the chest xray dataset was used to generate a model based on convolutional neural network'
+
+    '## Information about datasets'
+
+    '### symptoms dataset'
+
+    '- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred'
+    '- over 3 million patients were tested'
+    '- features - headache, sore throat, age above 60, shortness of breath, fever, cough, test indication'
+    '- label - test outcome'
+
+    ' ### chest Xray dataset'
+    '-  dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**'
+    '-  dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset'
+
+    '## Model perfomance' 
+    'For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%'
+    'For the chest Xray model based on convoluted neural network, the training accuracy is 96% and validation accuracy is 92%'
+
+
+#     st.markdown('#### COVID-19 symptoms dataset is publicly available from government of Israel')
+#     st.write(' ')
+#     st.markdown(""" - ##### dataset translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred
+# - ##### over 3 million patients were tested 
+# - ##### dataset contains: headache, sore throat, age above 60, shortness of breath, fever, cough, test indication, test outcome 
+# """)
+
+#     st.markdown('#### COVID-19 chest Xray images are available on Kaggle')
+#     st.markdown(""" -  ##### dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
+# - ##### dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset
+#     """)
