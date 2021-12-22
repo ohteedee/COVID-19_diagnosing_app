@@ -1,0 +1,11 @@
+
+PIL 
+base64
+numpy 
+pandas
+matplotlib.pyplot
+seaborn
+joblib
+tensorflow
+tensorflow.keras
+streamlit
