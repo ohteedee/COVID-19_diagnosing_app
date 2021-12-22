@@ -5,15 +5,21 @@ import pandas as pd
 
 from utils import new_RF_model, Xray_tensorflow_model
 
+def predict_probability(dataframe):
+    '''
+    This function imports Random forest model from utils and predict the probability of COVID-19 infection oucome using symptoms of user.
+    it takes a dataframe as input
+    '''
+    predicted_probability = new_RF_model.predict_proba(dataframe)
+    return predicted_probability
 
 def predict_symptoms_outcome(dataframe):
     '''
-    This function imports Random forest model from utils and predict COVID-19 infection oucome using symptoms of user.
+    This function imports Random forest model from utils and predict class with hihest probability using symptoms of user.
     it takes a dataframe as input
     '''
     predicted_class = new_RF_model.predict(dataframe)
-    predicted_probability = new_RF_model.predict_proba(dataframe)
-    return predicted_probability, predicted_class
+    return predicted_class
 
 def predict_covid_with_Xray(processed_image):
     '''
