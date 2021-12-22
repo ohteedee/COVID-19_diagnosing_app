@@ -1,6 +1,5 @@
 
 pillow 
-base64
 numpy 
 pandas
 matplotlib.pyplot
