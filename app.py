@@ -6,32 +6,6 @@ from utils import convert_age_to_category, convert_test_indication_to_category, 
 from models import predict_symptoms_outcome, predict_covid_with_Xray
 from decisions import optional_recommendations_when_positive_outcome, decision_for_covid_dual_model, decision_for_normal_dual_model, decision_for_Pneumonia_dual_model
 from PIL import Image
-import base64
-
-main_bg = "5.png"
-main_bg_ext = "png"
-
-
-st.markdown(
-    f"""
-    <style>
-    .reportview-container {{
-        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
-        background-size:cover;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
-
-
-
-
-
-
-
 
     
 
