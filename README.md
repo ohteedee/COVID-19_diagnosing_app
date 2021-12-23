@@ -1,6 +1,15 @@
 # COVID-19-diagnosing application
 This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. X-ray can help distinguish between COVID and Pneumonia
 
+### deployment 
+You can see this application in action the the below URL:
+
+##### https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py
+
+### replication of work
+Feel free to clone the repo. However acknowledgement of this work is expected. 
+
+If you need the origninal notebooks about how the models were generated, you can reach out to me on linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
 ### General information
 The application is based on two datasets (see dataset section). The first is based on covid-19 symptoms and the second is based on chest xray
 
@@ -28,7 +37,11 @@ The app.py file is the main file for running streamlit application. it contains 
 
 The decision.py file contains functions used in the app.py file for making decions after running models
 
+models.py contains functions to predict using the two described models
 
 utils.py conatins code for loading both models. it also contains functions to process inputs. for example, fucntion to convert input image into array. fucntions to convert inputs of symptoms into categorical data. lastly, it contains function used for converting symptoms input into dataframe for model prediction.
+
+app created by Tosin D. Oyewale (PhD) 
+Linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
 
 

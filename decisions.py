@@ -45,7 +45,7 @@ def decision_for_covid_dual_model(Xray_prediction, symptoms_outcome):
         st.markdown(f"<h3 style='text-align: left; color: blue;'>Overall, with {percent_prob} percent chance, you may have COVID-19</h3>", unsafe_allow_html=True)
 
 
-def decision_for_normal_dual_model(symptoms_outcome):
+def decision_for_normal_dual_model(symptoms_outcome, confidence_prob):
     '''
     this function is useful when both models are to be used. 
     it helps to make decision when Xray model predicts normal and after symptoms is checked
@@ -53,7 +53,7 @@ def decision_for_normal_dual_model(symptoms_outcome):
     '''
     if symptoms_outcome == 'positive':
         # st.subheader(f'your chest Xray suggest that your lungs are fine but your symptoms you are {symptoms_outcome[0]} for COVID-19')
-        st.markdown(f"<h3 style='text-align: left; color: blue;'>your chest Xray suggests that your lungs are fine but your symptoms you are {symptoms_outcome[0]} for COVID-19</h3>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: left; color: blue;'>your chest Xray suggests that your lungs are fine but your symptoms you are {symptoms_outcome[0]} for COVID-19; with {confidence_prob} percent confidence </h3>", unsafe_allow_html=True)
     else:
         # st.subheader(f'Based on your chest Xray and your symptoms, with very high level of certainty, you are {symptoms_outcome[0]} for COVID-19')
         st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray and your symptoms, with very high level of certainty, you are {symptoms_outcome[0]} for COVID-19</h3>", unsafe_allow_html=True)
