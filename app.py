@@ -173,12 +173,12 @@ if navigation == 'main app':
                     # plt.ylabel('probability')
                     # st.pyplot(fig)
 
-                if Xray_prediction[2] == max(Xray_prediction):
-                    Xray_outcome = 'positive'
-                    optional_recommendations_when_positive_outcome(Xray_outcome,serious_underlying_condition,age)
-                elif Xray_prediction[0] == max(Xray_prediction):
-                    st.subheader('Pneumonia is also a serious condition, here are some recommendations for you')
-                    st.write('if you have difficulty breathing, chest pain, persistent fever of 39 Celcius or higher, or persistent cough, especially if you are coughing up pus, See your GP')
+                    if Xray_prediction[2] == max(Xray_prediction):
+                        Xray_outcome = 'positive'
+                        optional_recommendations_when_positive_outcome(Xray_outcome,serious_underlying_condition,age)
+                    elif Xray_prediction[0] == max(Xray_prediction):
+                        st.subheader('Pneumonia is also a serious condition, here are some recommendations for you')
+                        st.write('if you have difficulty breathing, chest pain, persistent fever of 39 Celcius or higher, or persistent cough, especially if you are coughing up pus, See your GP')
                     
 
                 
