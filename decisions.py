@@ -28,17 +28,17 @@ def optional_recommendations_when_positive_outcome(outcome,serious_underlying_co
         
 
 
-def decision_for_covid_dual_model(Xray_prediction, symptoms_outcome):
+def decision_for_covid_dual_model(Xray_outcome, outcome_symptoms):
     '''
     this function is useful when both models are to be used. 
     it helps to make decision when Xray model predicts covid and after symptoms is checked
     it takes the result of Xray model prediction and model based symptoms as input
     '''
-    if symptoms_outcome == 'positive':
+    if outcome_symptoms == 'positive':
         # st.subheader(f'Based on your chest Xray and your symptoms, with very high level of certainty, you are {symptoms_outcome[0]} for COVID-19')
-        st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray and your symptoms, with very high level of certainty, you are {symptoms_outcome[0]} for COVID-19</h3>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray and your symptoms, with very high level of certainty, you are {outcome_symptoms[0]} for COVID-19</h3>", unsafe_allow_html=True)
     else:
-        percent_prob = round((Xray_prediction[2]*100), 1)
+        percent_prob = round((Xray_outcome[2]*100), 1)
         # st.subheader(f'Although your chest Xray suggest that hints at {percent_prob} percent chance of COVID-19, your symptoms suggest otherwise')
         st.markdown(f"<h3 style='text-align: left; color: blue;'>Although your chest Xray suggests {percent_prob} percent chance of COVID-19, your symptoms suggest otherwise</h3>", unsafe_allow_html=True)
         # st.subheader(f'overall, with {percent_prob} percent chance, you may have COVID-19')
