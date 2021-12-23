@@ -6,6 +6,7 @@ from utils import convert_age_to_category, convert_test_indication_to_category, 
 from models import predict_symptoms_outcome, predict_probability, predict_covid_with_Xray
 from decisions import optional_recommendations_when_positive_outcome, decision_for_covid_dual_model, decision_for_normal_dual_model, decision_for_Pneumonia_dual_model
 from PIL import Image
+import os
 
  # this section generates the sidebar   
 navigation = st.sidebar.radio('contents', ('main app', 'about'))
@@ -77,25 +78,82 @@ if navigation == 'main app':
         elif input_method == 'I want to use only chest Xray':
 
             st.subheader('prediction with chest Xray')
+            option = st.radio('', ['upload your own XRay','use available sample images'])
 
-            form = st.form(key='my-form')
-            uploaded_file = form.file_uploader("please upload a jpeg image of your chest Xray", type="jpeg")
-            form.subheader('optional inputs')
-            age = form.number_input('How old are you?', min_value=16, max_value=150,  step=1, value=45)
-            serious_underlying_condition = False
-            condition1 = form.radio('other undelying condition?', 
-                ('none','Diabetes', 'lung disease', 'heart or cardivascular disease',
-                'cancer', 'kidney disease' 
-                ))
-            if condition1 != 'none':
-                serious_underlying_condition = True
-            submit = form.form_submit_button(label= "predict my COVID-19 status")
+            if option == 'upload your own XRay':
+                form = st.form(key='my-form')
+                uploaded_file = form.file_uploader("please upload image of your chest Xray", type="jpeg")
+                form.warning('Model was trained with chest Xray images, and can only perform accurately with chest Xray images. Inputing any other kind of image will give unwanted results')
+                form.subheader('optional inputs')
+                age = form.number_input('How old are you?', min_value=16, max_value=150,  step=1, value=45)
+                serious_underlying_condition = False
+                condition1 = form.radio('other undelying condition?', 
+                    ('none','Diabetes', 'lung disease', 'heart or cardivascular disease',
+                    'cancer', 'kidney disease' 
+                    ))
+                if condition1 != 'none':
+                    serious_underlying_condition = True
+                submit = form.form_submit_button(label= "predict my COVID-19 status")
 
-            if submit:
-                if uploaded_file is None:
-                    st.subheader('you need to provide image input!')
-                else:
-                    image = Image.open(uploaded_file)
+                if submit:
+                    if uploaded_file is None:
+                        st.subheader('you need to provide image input!')
+                    else:
+                        image = Image.open(uploaded_file)
+                        processed_image = TestImgPreprocessing(image)
+                        Xray_prediction = predict_covid_with_Xray(processed_image)
+                        if Xray_prediction[2] == max(Xray_prediction):
+                            percent_prob = round((Xray_prediction[2]*100), 1)
+                            # st.subheader(f'based on your check Xray, there is {percent_prob} percent probability you have COVID-19')
+                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, there is {percent_prob} percent probability you have COVID-19</h3>", unsafe_allow_html=True)
+                        elif Xray_prediction[1] == max(Xray_prediction):
+                            percent_prob_normal = round((Xray_prediction[1]*100), 1)
+                            percent_prob_covid = round((Xray_prediction[2]*100), 1)
+                            # st.subheader(f'based on your check Xray, there is {percent_prob} percent probability you have you do not have COVID-19')
+                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, there is {percent_prob_normal} percent probability that you are normal and {percent_prob_covid} percent probability that you have covid </h3>", unsafe_allow_html=True)
+                        else:
+                            percent_prob_Pneumonia = round((Xray_prediction[0]*100), 1)
+                            percent_prob_covid = round((Xray_prediction[2]*100), 1)
+                            # st.subheader(f'based on your check Xray, there is {percent_prob} percent probability you have you have Pneumonia')
+                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you have {percent_prob_Pneumonia} percent probability you have Pneumonia and {percent_prob_covid} percent probability for covid </h3>", unsafe_allow_html=True)
+                        st.subheader(f'The below graph shows the other possibilities')
+                        fig, ax = plt.subplots()
+                        ax = sns.barplot( x = ['Pneumonia', 'Normal', 'Covid'], y=Xray_prediction)
+                        sns.despine()
+                        plt.ylabel('probability')
+                        st.pyplot(fig)
+
+                        if Xray_prediction[2] == max(Xray_prediction):
+                            Xray_outcome = 'positive'
+                            # age, serious_underlying_condition = ask_for_recommendation(Xray_outcome)
+                            optional_recommendations_when_positive_outcome(Xray_outcome,serious_underlying_condition,age)
+                        elif Xray_prediction[0] == max(Xray_prediction):
+                            st.subheader('Pneumonia is also a serious condition, here are some recommendations for you')
+                            st.write('if you have difficulty breathing, chest pain, persistent fever of 39 Celcius or higher, or persistent cough, especially if you are coughing up pus, See your GP')
+            if option == 'use available sample images':
+                # I need to get some sample images to use from the sample_data folder
+                
+                form = st.form(key='my-form')
+                path1 = os.listdir("sample_data")
+                imge = form.selectbox(
+                    'Please Select a Test Image:',
+                    path1
+                )
+                form.warning('Model was trained with chest Xray images, and can only perform accurately with chest Xray images. Inputing any other kind of image will give unwanted results')
+                form.subheader('optional inputs')
+                age = form.number_input('How old are you?', min_value=16, max_value=150,  step=1, value=45)
+                serious_underlying_condition = False
+                condition1 = form.radio('other undelying condition?', 
+                    ('none','Diabetes', 'lung disease', 'heart or cardivascular disease',
+                    'cancer', 'kidney disease' 
+                    ))
+                if condition1 != 'none':
+                    serious_underlying_condition = True
+                submit = form.form_submit_button(label= "predict my COVID-19 status")
+
+                if submit:
+                    image = Image.open(os.path.join("sample_data", imge))
+                    st.image(image, caption=" your chosen XRay", use_column_width=True)
                     processed_image = TestImgPreprocessing(image)
                     Xray_prediction = predict_covid_with_Xray(processed_image)
                     if Xray_prediction[2] == max(Xray_prediction):
@@ -126,6 +184,11 @@ if navigation == 'main app':
                     elif Xray_prediction[0] == max(Xray_prediction):
                         st.subheader('Pneumonia is also a serious condition, here are some recommendations for you')
                         st.write('if you have difficulty breathing, chest pain, persistent fever of 39 Celcius or higher, or persistent cough, especially if you are coughing up pus, See your GP')
+                    
+
+                
+            
+
                         
                     
 
@@ -133,7 +196,8 @@ if navigation == 'main app':
         elif input_method == 'I prefer using both symptoms and chest Xray':
             st.subheader('prediction with both chest Xray and symptoms')
             form = st.form(key='my-form')
-            uploaded_file = form.file_uploader("please upload a jpeg image of your chest Xray and provide information about your symptoms", type=["jpeg", "png", "jpeg"])
+            uploaded_file = form.file_uploader("please upload image of your chest Xray and provide information about your symptoms", type=["jpeg", "png", "jpeg"])
+            form.warning('Model was trained with chest Xray images, and can only perform accurately with chest Xray images. Inputing any other kind of image will give unwanted results')
             # I am collecting users input data for symptoms 
             cough = form.selectbox('Are you coughing now or in the last five days?', ('yes', 'no'))
             fever = form.number_input('What is your body temperature in Celcius?', min_value=33.0, max_value=42.0, step=0.1, value=37.0)
@@ -193,7 +257,7 @@ if navigation == 'main app':
                         decision_for_Pneumonia_dual_model(Xray_prediction, symptoms_outcome)
                         # age, serious_underlying_condition = ask_for_recommendation(symptoms_outcome)
                         optional_recommendations_when_positive_outcome(symptoms_outcome,serious_underlying_condition,age)
-    st.write("Disclaimer- this application was designed as a proof of concept. To diagnose COVID-19, please contact your doctor")
+    
 
 elif navigation == 'about':
 
@@ -217,3 +281,5 @@ elif navigation == 'about':
     '## Model perfomance' 
     'For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%'
     'For the chest Xray model based on convoluted neural network, the training accuracy is 96% and validation accuracy is 92%'
+
+    st.warning("Disclaimer- this application was designed as a proof of concept. To diagnose COVID-19, please contact your doctor")
