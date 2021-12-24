@@ -18,7 +18,7 @@ st.sidebar.write('email- tosinoyewale@yahoo.co.uk')
 
 if navigation == 'main app':  
     st.image('END_COVID.jpeg')
-    st.title("ohteedee's COVID-diagnosing application")
+    st.title("Ohteedee's COVID-diagnosing application")
     st.write("This application predicts status of covid of users' using symptoms and/or chest X-ray as input" )
     st.write("It is useful especially when there is no access to PCR test")
   
@@ -70,9 +70,10 @@ if navigation == 'main app':
                 # covid_pobability_percent = covid_pobability * 100
                 # covid_pobability_percent = round(covid_pobability_percent, 0)
                 confidence_prob = round (max(probability[0]) * 100, 0)
-                st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your symptoms, with a confidence of {confidence_prob} percent, you are {symptoms_outcome[0]} for COVID-19</h3>", unsafe_allow_html=True)
+                st.success(f" ### Based on your symptoms, with a confidence of {confidence_prob} percent, you are {symptoms_outcome[0]} for COVID-19")
+                # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your symptoms, with a confidence of {confidence_prob} percent, you are {symptoms_outcome[0]} for COVID-19</h3>", unsafe_allow_html=True)
                 optional_recommendations_when_positive_outcome(symptoms_outcome,serious_underlying_condition,age)
-
+                
         
 
         elif input_method == 'I want to use only chest Xray':
@@ -97,23 +98,27 @@ if navigation == 'main app':
 
                 if submit:
                     if uploaded_file is None:
-                        st.subheader('you need to provide image input!')
+                        st.error('you need to provide image input!')
                     else:
                         image = Image.open(uploaded_file)
                         processed_image = TestImgPreprocessing(image)
                         Xray_prediction = predict_covid_with_Xray(processed_image)
                         if Xray_prediction[2] == max(Xray_prediction):
                             percent_prob = round((Xray_prediction[2]*100), 1)
-                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent </h3>", unsafe_allow_html=True)
+                            st.success(f" ### Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent")
+                            # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent </h3>", unsafe_allow_html=True)
                         elif Xray_prediction[1] == max(Xray_prediction):
                             percent_prob_normal = round((Xray_prediction[1]*100), 1)
                             percent_prob_covid = round((Xray_prediction[2]*100), 1)
-                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent </h3>", unsafe_allow_html=True)
+                            st.success(f" ### Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent")
+                            # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent </h3>", unsafe_allow_html=True)
                         else:
                             percent_prob_Pneumonia = round((Xray_prediction[0]*100), 1)
                             percent_prob_covid = round((Xray_prediction[2]*100), 1)
-                            st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent. </h3>", unsafe_allow_html=True)
-                            st.markdown(f"<h3 style='text-align: left; color: blue;'>The confidence that you have COVID-19 is {percent_prob_covid} percent </h3>", unsafe_allow_html=True)
+                            st.success(f" ### Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent.")
+                            st.success(f" ### The confidence that you have COVID-19 is {percent_prob_covid} percent ")
+                            # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent. </h3>", unsafe_allow_html=True)
+                            # st.markdown(f"<h3 style='text-align: left; color: blue;'>The confidence that you have COVID-19 is {percent_prob_covid} percent </h3>", unsafe_allow_html=True)
                         # st.subheader(f'The below graph shows the other possibilities')
                         # fig, ax = plt.subplots()
                         # ax = sns.barplot( x = ['Pneumonia', 'Normal', 'Covid'], y=Xray_prediction)
@@ -136,7 +141,6 @@ if navigation == 'main app':
                     'Please Select a Test Image:',
                     path1
                 )
-                form.warning('Model was trained with chest Xray images, and can only perform accurately with chest Xray images. Inputing any other kind of image will give unwanted results')
                 form.subheader('optional inputs')
                 age = form.number_input('How old are you?', min_value=16, max_value=150,  step=1, value=45)
                 serious_underlying_condition = False
@@ -155,16 +159,20 @@ if navigation == 'main app':
                     Xray_prediction = predict_covid_with_Xray(processed_image)
                     if Xray_prediction[2] == max(Xray_prediction):
                         percent_prob = round((Xray_prediction[2]*100), 1)
-                        st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent </h3>", unsafe_allow_html=True)
+                        st.success(f" ### Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent")
+                        # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray,  you have COVID-19, confidence is {percent_prob} percent </h3>", unsafe_allow_html=True)
                     elif Xray_prediction[1] == max(Xray_prediction):
                         percent_prob_normal = round((Xray_prediction[1]*100), 1)
                         percent_prob_covid = round((Xray_prediction[2]*100), 1)
-                        st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent </h3>", unsafe_allow_html=True)
+                        st.success(f" ### Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent ")
+                        # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you are normal, confidence is {percent_prob_normal} percent </h3>", unsafe_allow_html=True)
                     else:
                         percent_prob_Pneumonia = round((Xray_prediction[0]*100), 1)
                         percent_prob_covid = round((Xray_prediction[2]*100), 1)
-                        st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent. </h3>", unsafe_allow_html=True)
-                        st.markdown(f"<h3 style='text-align: left; color: blue;'>The confidence that you have COVID-19 is {percent_prob_covid} percent </h3>", unsafe_allow_html=True)
+                        st.success(f" ### Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent.")
+                        st.success(f" ### The confidence that you have COVID-19 is {percent_prob_covid} percent")
+                        # st.markdown(f"<h3 style='text-align: left; color: blue;'>Based on your chest Xray, you have Pneumonia, confidence is {percent_prob_Pneumonia} percent. </h3>", unsafe_allow_html=True)
+                        # st.markdown(f"<h3 style='text-align: left; color: blue;'>The confidence that you have COVID-19 is {percent_prob_covid} percent </h3>", unsafe_allow_html=True)
                     # st.subheader(f'The below graph shows the other possibilities')
                     # fig, ax = plt.subplots()
                     # ax = sns.barplot( x = ['Pneumonia', 'Normal', 'Covid'], y=Xray_prediction)
@@ -218,7 +226,7 @@ if navigation == 'main app':
             
                 if submit:
                     if uploaded_file is None:
-                        st.subheader('you need to provide image input!')
+                        st.error('you need to provide image input!')
                     else:
                         image = Image.open(uploaded_file)
                         processed_image = TestImgPreprocessing(image)
@@ -258,7 +266,6 @@ if navigation == 'main app':
                     'Please Select a Test Image:',
                     path1
                 )
-                form.warning('Model was trained with chest Xray images, and can only perform accurately with chest Xray images. Inputing any other kind of image will give unwanted results')
                 # I am collecting users input data for symptoms 
                 cough = form.selectbox('Are you coughing now or in the last five days?', ('yes', 'no'))
                 fever = form.number_input('What is your body temperature in Celcius?', min_value=33.0, max_value=42.0, step=0.1, value=37.0)
