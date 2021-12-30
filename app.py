@@ -56,6 +56,7 @@ if navigation == 'main app':
                 serious_underlying_condition = True
             submit = form.form_submit_button(label= "predict my COVID-19 status")
             
+            # process the input after submit by users. all funtions are imported from other files. generate outcome
             if submit:
                 fever = convert_temperature_to_categories(fever)
                 age_60_and_above = convert_age_to_category(age)
@@ -75,12 +76,13 @@ if navigation == 'main app':
                 optional_recommendations_when_positive_outcome(symptoms_outcome,serious_underlying_condition,age)
                 
         
-
+        # users can decide to use xray alone. in that case, they can upload their own image or use some samples 
+        # note that the processing of the image is the same, well except that for sample images, i needed to provide the path using os.
         elif input_method == 'I want to use only chest Xray':
 
             st.subheader('prediction with chest Xray')
             option = st.radio('', ['upload your own XRay','use available sample images'])
-
+            # if they decide to use their own 
             if option == 'upload your own XRay':
                 form = st.form(key='my-form')
                 uploaded_file = form.file_uploader("please upload image of your chest Xray", type="jpeg")
@@ -100,6 +102,7 @@ if navigation == 'main app':
                     if uploaded_file is None:
                         st.error('you need to provide image input!')
                     else:
+                    
                         image = Image.open(uploaded_file)
                         processed_image = TestImgPreprocessing(image)
                         Xray_prediction = predict_covid_with_Xray(processed_image)
