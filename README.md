@@ -35,13 +35,21 @@ For the chest Xray model based on convoluted neural network, the training accura
 ### information for python file in this application
 The app.py file is the main file for running streamlit application. it contains code used to design the application interface and also contains code for collecting inputs from users. it uses functions from other files to make decision upon inputs from users
 
+utils.py conatins code for loading both models. 
+
+
+#### processor folder/package contains three main files listed below.
+
 The decision.py file contains functions used in the app.py file for making decions after running models
 
 symptoms.py contains code where I defined a class 'ProcessSymptomsData'. The class can accept several symptoms data as attributes and use functions to process them. examples- it can convert temeprature into category and eventually generate a dataframe which will be used for prediction.
 
 imagedata.py contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
 
-utils.py conatins code for loading both models. 
+##### pictures folder contains imaged used on homepage of app.
+
+
+
 app created by Tosin D. Oyewale (PhD) 
 Linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
 
