@@ -2,9 +2,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from symptoms import ProcessSymptomsData
-from imagedata import ProcessImageData
-from decisions import optional_recommendations_when_positive_outcome, decision_for_covid_dual_model, decision_for_normal_dual_model, decision_for_Pneumonia_dual_model
+from processor.symptoms import ProcessSymptomsData
+from processor.imagedata import ProcessImageData
+from processor.decisions import optional_recommendations_when_positive_outcome, decision_for_covid_dual_model, decision_for_normal_dual_model, decision_for_Pneumonia_dual_model
 from PIL import Image
 import os
 
@@ -17,7 +17,7 @@ st.sidebar.write('email- tosinoyewale@yahoo.co.uk')
 
 
 if navigation == 'main app':  
-    st.image('END_COVID.jpeg')
+    st.image('pictures/END_COVID.jpeg')
     st.title("Ohteedee's COVID-diagnosing application")
     st.write("This application predicts status of covid of users' using symptoms and/or chest X-ray as input" )
     st.write("It is useful especially when there is no access to PCR test")
