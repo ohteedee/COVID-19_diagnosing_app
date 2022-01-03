@@ -37,10 +37,11 @@ The app.py file is the main file for running streamlit application. it contains 
 
 The decision.py file contains functions used in the app.py file for making decions after running models
 
-models.py contains functions to predict using the two described models
+symptoms.py contains code where I defined a class 'ProcessSymptomsData'. The class can accept several symptoms data as attributes and use functions to process them. examples- it can convert temeprature into category and eventually generate a dataframe which will be used for prediction.
 
-utils.py conatins code for loading both models. it also contains functions to process inputs. for example, fucntion to convert input image into array. fucntions to convert inputs of symptoms into categorical data. lastly, it contains function used for converting symptoms input into dataframe for model prediction.
+imagedata.py contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
 
+utils.py conatins code for loading both models. 
 app created by Tosin D. Oyewale (PhD) 
 Linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
 
