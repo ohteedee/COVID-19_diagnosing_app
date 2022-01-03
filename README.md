@@ -46,7 +46,11 @@ symptoms.py contains code where I defined a class 'ProcessSymptomsData'. The cla
 
 imagedata.py contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
 
-##### pictures folder contains imaged used on homepage of app.
+##### pictures folder contains image used on homepage of app.
+
+##### the two models used were placed in the folder models.
+
+##### sample data folder contains chest Xray images that can be used to test app.
 
 
 
