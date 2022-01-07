@@ -2,13 +2,13 @@
 This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. X-ray can help distinguish between COVID and Pneumonia
 
 ### deployment 
-You can see this application in action [here] (https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py)
+You can see this application in action [here](https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py)
 
 
 ### replication of work
 Feel free to clone the repo. However acknowledgement of this work is expected. 
 
-If you need the origninal notebooks about how the models were generated, you can reach out to me on linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
+If you need the origninal notebooks about how the models were generated, you can reach out to me on [linkedin](https://www.linkedin.com/in/tosin-oyewale/) 
 ### General information
 The application is based on two datasets (see dataset section). The first is based on covid-19 symptoms and the second is based on chest xray
 
@@ -18,14 +18,14 @@ Both were used to generate classification models. symptoms model is based on ran
 
 - ### symptoms dataset
 
-- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed here: https://www.nature.com/articles/s41746-020-00372-6 and https://github.com/nshomron/covidpred
+- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed [here](https://www.nature.com/articles/s41746-020-00372-6) 
 - over 3 million patients were tested 
 - features - headache, sore throat, age above 60, shortness of breath, fever, cough, test indication
 - label - test outcome 
 
 - ### chest Xray dataset
 -  dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
--  dataset downloaded from [kaggle] (https://www.kaggle.com/pranavraikokte/covid19-image-dataset)
+-  dataset downloaded from [kaggle](https://www.kaggle.com/pranavraikokte/covid19-image-dataset)
 
 ### model perfomance 
 For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%
@@ -54,6 +54,6 @@ imagedata.py contains code where I defined class 'ProcessImageData' to accept im
 
 
 app created by Tosin D. Oyewale (PhD) 
-[Linkedin] (https://www.linkedin.com/in/tosin-oyewale/ )
+[Linkedin](https://www.linkedin.com/in/tosin-oyewale/ )
 
 
