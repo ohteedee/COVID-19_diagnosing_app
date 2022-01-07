@@ -2,9 +2,8 @@
 This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. X-ray can help distinguish between COVID and Pneumonia
 
 ### deployment 
-You can see this application in action in the below URL:
+You can see this application in action [here] (https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py)
 
-##### https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py
 
 ### replication of work
 Feel free to clone the repo. However acknowledgement of this work is expected. 
@@ -26,7 +25,7 @@ Both were used to generate classification models. symptoms model is based on ran
 
 - ### chest Xray dataset
 -  dataset used has three classes: **Normal**, **COVID-19**, and **Pneumonia**
--  dataset downloaded from https://www.kaggle.com/pranavraikokte/covid19-image-dataset
+-  dataset downloaded from [kaggle] (https://www.kaggle.com/pranavraikokte/covid19-image-dataset)
 
 ### model perfomance 
 For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%
@@ -55,6 +54,6 @@ imagedata.py contains code where I defined class 'ProcessImageData' to accept im
 
 
 app created by Tosin D. Oyewale (PhD) 
-Linkedin - https://www.linkedin.com/in/tosin-oyewale/ 
+[Linkedin] (https://www.linkedin.com/in/tosin-oyewale/ )
 
 
