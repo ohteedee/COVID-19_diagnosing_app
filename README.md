@@ -13,9 +13,10 @@ You can see this application in action [here](https://share.streamlit.io/ohteede
 
 
 ### replication of work
-Feel free to clone the repo. However acknowledgement of this work is expected. 
+Feel free to clone the repo. 
 
-If you need the origninal notebooks about how the models were generated, you can reach out to me on [linkedin](https://www.linkedin.com/in/tosin-oyewale/) 
+If you have additional questions, you can send a message to me on [linkedin](https://www.linkedin.com/in/tosin-oyewale/)
+
 ### General information
 The application is based on two datasets (see dataset section). The first is based on covid-19 symptoms and the second is based on chest xray
 
