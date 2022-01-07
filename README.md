@@ -4,7 +4,8 @@
 <img src="pictures/END_COVID.jpeg" alt="END_COVID" width="2000"/>
 
 
-This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. X-ray can help distinguish between COVID and Pneumonia
+This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. 
+X-ray can help distinguish between COVID and Pneumonia
 
 ### deployment 
 
@@ -38,16 +39,20 @@ Both were used to generate classification models. symptoms model is based on ran
 ### model perfomance 
 For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%
 <br />
+
 For the chest Xray model based on convoluted neural network, the training accuracy is 96% and validation accuracy is 92%
 
 ### information for python file in this application
 The app.py file is the main file for running streamlit application. 
 It contains code used to design the application interface and also contains code for collecting inputs from users. it uses functions from other files to make decision upon inputs from users
 <br />
+
 utils.py conatins code for loading both models. 
 <br />
+
 processor folder/package contains three main files listed below.
 <br />
+
 The decision.py file contains functions used in the app.py file for making decions after running models.
 <br />
 
@@ -57,10 +62,13 @@ Examples- it can convert temeprature into category and eventually generate a dat
 
 imagedata.py contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
 <br />
+
 pictures folder contains image used on homepage of app.
 <br />
+
 the two models used were placed in the folder models.
 <br />
+
 sample data folder contains chest Xray images that can be used to test app.
 
 
