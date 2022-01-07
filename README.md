@@ -1,7 +1,14 @@
 # COVID-19-diagnosing application
+
+
+<img src="pictures/END_COVID.jpeg" alt="END_COVID" width="2000"/>
+
+
 This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. X-ray can help distinguish between COVID and Pneumonia
 
 ### deployment 
+
+application user interface was built using streamlit and deployed to streamlit using github. 
 You can see this application in action [here](https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py)
 
 
