@@ -18,12 +18,12 @@ st.sidebar.write('email- tosinoyewale@yahoo.co.uk')
 
 if navigation == 'main app':  
     st.image('pictures/END_COVID.jpeg')
-    st.title("Ohteedee's COVID-diagnosing application")
+    st.title("COVID-diagnosing application")
     st.write("This application predicts status of covid of users' using symptoms and/or chest X-ray as input" )
     st.write("It is useful especially when there is no access to PCR test")
   
   
-    # let the user decide what inpute type they want to use- symptoms, xray or both
+    # let the user decide what input type they want to use- symptoms, xray or both
     st.subheader('what input would you like to use to diagnose COVID-19?')
     input_method = st.radio('select input methods. both symptoms and chest Xray is recommended for highest accuracy', ('none','I want to provide only symptoms', 'I want to use only chest Xray', 'I prefer using both symptoms and chest Xray'))
     if input_method != 'none':
@@ -133,10 +133,10 @@ if navigation == 'main app':
                 
                 # I need to get some sample images to use from the sample_data folder
                 form = st.form(key='my-form')
-                path1 = os.listdir("sample_data")
+                image_list1 = os.listdir("sample_data")
                 imge = form.selectbox(
                     'Please Select a Test Image:',
-                    path1
+                    image_list1
                 )
                 form.subheader('optional inputs')
                 age = form.number_input('How old are you?', min_value=16, max_value=150,  step=1, value=45)
@@ -253,10 +253,10 @@ if navigation == 'main app':
                 
 
                 form = st.form(key='my-form')
-                path1 = os.listdir("sample_data")
+                image_list1= os.listdir("sample_data")
                 imge = form.selectbox(
                     'Please Select a Test Image:',
-                    path1
+                    image_list1
                 )
                 # I am collecting users input data for symptoms 
                 cough3 = form.selectbox('Are you coughing now or in the last five days?', ('yes', 'no'))
