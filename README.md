@@ -4,12 +4,13 @@
 <img src="pictures/END_COVID.jpeg" alt="END_COVID" width="2000"/>
 
 
-This application takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. 
+I designed this application to diagnose COVID-19. 
+It takes either symptoms and/or chest X-ray as input from users and predict whether they have COVID. 
 X-ray can help distinguish between COVID and Pneumonia
 
 ### Deployment 
 
-application user interface was built using streamlit and deployed to streamlit using github. 
+Application user interface was built using streamlit and deployed to streamlit using github. 
 You can see this application in action [here](https://share.streamlit.io/ohteedee/covid-19_diagnosing_app/main/app.py)
 
 
@@ -19,15 +20,16 @@ Feel free to clone the repo.
 If you have additional questions, you can send a message to me on [linkedin](https://www.linkedin.com/in/tosin-oyewale/)
 
 ### General information
-The application is based on two datasets (see dataset section). The first is based on covid-19 symptoms and the second is based on chest xray
+The application is based on two datasets (see dataset section). 
+The first is based on covid-19 symptoms dataset which I explored and used to generate a model using random forest classification algorithm. 
 
-Both were used to generate classification models. symptoms model is based on random forest classification algorithm while the chest xray dataset was used to generate a model based on convolutional neural network
+The second is based on chest X-ray images which I used to generate a model based on convolutional neural network (CNN). 
 
 ### Information about datasets
 
 - ### Symptoms dataset
 
-- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english and discussed [here](https://www.nature.com/articles/s41746-020-00372-6) 
+- COVID-19 symptoms dataset is publicly available from government of Israel. The dataset is translated into english [here](https://www.nature.com/articles/s41746-020-00372-6) 
 - over 3 million patients were tested 
 - features - headache, sore throat, age above 60, shortness of breath, fever, cough, test indication
 - label - test outcome 
@@ -40,30 +42,29 @@ Both were used to generate classification models. symptoms model is based on ran
 For symptoms model which is based on random forest, the training, cross validation and the test accuracy is 92%
 <br />
 
-For the chest Xray model based on convoluted neural network, the training accuracy is 96% and validation accuracy is 92%
+For the chest Xray model based on CNN, the training accuracy is 96% and validation accuracy is 92%. 
 
 ### Information for python file in this application
-The app.py file is the main file for running streamlit application. 
-It contains code used to design the application interface and also contains code for collecting inputs from users. it uses functions from other files to make decision upon inputs from users
+The ```app.py``` file is the main file for running streamlit application. 
+It contains code used to design the application interface and also contains code for collecting inputs from users. 
+It uses functions from other files to make decision upon inputs from users
 <br />
 
-The utils.py conatins code for loading both models. 
+```utils.py``` conatins code for loading both models. 
 <br />
 
-The processor folder/package contains three main files listed below.
+The processor folder contains three main files listed below.
 <br />
 
-The decision.py file contains functions used in the app.py file for making decions after running models.
+The ```decision.py``` file contains functions used in the app.py file for making decions after running models.
 <br />
 
-The symptoms.py contains code where I defined a class 'ProcessSymptomsData'. The class can accept several symptoms data as attributes and use functions to process them. 
+The ```symptoms.py``` contains code where I defined a class 'ProcessSymptomsData'. 
+The class can accept several symptoms data as attributes and use functions to process them. 
 Examples- it can convert temeprature into category and eventually generate a dataframe which will be used for prediction.
 <br />
 
-The imagedata.py contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
-<br />
-
-The pictures folder contains image used on homepage of app.
+The ```imagedata.py``` contains code where I defined class 'ProcessImageData' to accept image, process it and make prediction using two seprate functions
 <br />
 
 The two models used were placed in the folder models.
