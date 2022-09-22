@@ -68,6 +68,7 @@ The ```imagedata.py``` contains code where I defined class 'ProcessImageData' to
 <br />
 
 The two models used were placed in the folder models.
+
 <br />
 
 The sample data folder contains chest Xray images that can be used to test app.
