@@ -12,7 +12,7 @@ import os
 navigation = st.sidebar.radio('contents', ('main app', 'about'))
 
 st.sidebar.write('app designed by Tosin D. Oyewale (Ph.D)')
-st.sidebar.write('Linkedin - https://www.linkedin.com/in/tosin-oyewale/')
+# st.sidebar.write('Linkedin - https://www.linkedin.com/in/tosin-oyewale/')
 st.sidebar.write('email- tosinoyewale@yahoo.co.uk')
 
 
